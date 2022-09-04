@@ -9,20 +9,22 @@ namespace RecipeNutrient.Data.Map
     {
         public void Configure(EntityTypeBuilder<Recipe> builder)
         {
-            builder.Property(m => m.Name).HasMaxLength(500);
+            builder.Property(r => r.Name).HasMaxLength(500);
+            builder.Property(r => r.CreatedAt).ValueGeneratedOnAdd();
+            builder.Property(r => r.UpdatedAt).ValueGeneratedOnUpdate();
 
-            builder.HasMany(r => r.Ingredients)
-            .WithMany(i => i.Recipes)
-            .UsingEntity<RecipeIngredient>(ri => ri.HasOne(a => a.Ingredient).WithMany(y => y.RecipeIngredients),
-                            o => o.HasOne(a => a.Recipe).WithMany(x => x.RecipeIngredients));
+            //builder.HasMany(r => r.Ingredients)
+            //.WithMany(i => i.Recipes)
+            //.UsingEntity<RecipeIngredient>(ri => ri.HasOne(a => a.Ingredient).WithMany(y => y.RecipeIngredients),
+            //                o => o.HasOne(a => a.Recipe).WithMany(x => x.RecipeIngredients));
 
             builder.HasOne(r => r.User)
-                    .WithMany(t => t.Recipes)
-                    .HasForeignKey(t => t.UserId);
+                    .WithMany(u => u.Recipes)
+                    .HasForeignKey(r => r.UserId);
 
             builder.HasOne(r => r.Category)
-                    .WithMany(t => t.Recipes)
-                    .HasForeignKey(t => t.CategoryId);
+                    .WithMany(c => c.Recipes)
+                    .HasForeignKey(r => r.CategoryId);
         }
     }
 }

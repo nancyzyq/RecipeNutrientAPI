@@ -7,6 +7,9 @@ public class RoleMap : IEntityTypeConfiguration<Role>
 {
     public void Configure(EntityTypeBuilder<Role> builder)
     {
+        builder.Property(r => r.CreatedAt).ValueGeneratedOnAdd();
+        builder.Property(r => r.UpdatedAt).ValueGeneratedOnUpdate();
+
         builder.HasMany(r => r.Users)
                 .WithOne(x => x.Role);
     }

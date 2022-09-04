@@ -9,10 +9,12 @@ namespace RecipeNutrient.Data.Map
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.Property(m => m.Name).HasMaxLength(250);
+            builder.Property(c => c.Name).HasMaxLength(250);
+            builder.Property(c => c.CreatedAt).ValueGeneratedOnAdd();
+            builder.Property(c => c.UpdatedAt).ValueGeneratedOnUpdate();
 
-            builder.HasMany(r => r.Recipes)
-            .WithOne(i => i.Category);
+            builder.HasMany(c => c.Recipes)
+            .WithOne(r => r.Category);
         }
     }
 }

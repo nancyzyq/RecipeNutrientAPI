@@ -6,9 +6,9 @@ namespace RecipeNutrient.Data.Model
         //public Unit()
         //{
         //}
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public ICollection<Recipe> Recipes { get; set; }
+        //public ICollection<Recipe> Recipes { get; set; }
         public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
 
     }

@@ -11,8 +11,8 @@ using RecipeNutrient.Data;
 namespace RecipeNutrient.Data.Migrations
 {
     [DbContext(typeof(RecipeNutrientDbContext))]
-    [Migration("20220821080955_entity")]
-    partial class entity
+    [Migration("20220904060920_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,7 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
@@ -35,6 +36,7 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("varchar(250)");
 
                     b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -53,6 +55,7 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("decimal(12,2)");
 
                     b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<decimal>("Energy")
@@ -80,6 +83,7 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("decimal(12,2)");
 
                     b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -97,6 +101,7 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Image")
@@ -106,10 +111,8 @@ namespace RecipeNutrient.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
-                    b.Property<int?>("UnitId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("UserId")
@@ -118,8 +121,6 @@ namespace RecipeNutrient.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("UnitId");
 
                     b.HasIndex("UserId");
 
@@ -137,6 +138,7 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("decimal(9,2)");
 
                     b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("IngredientId")
@@ -149,6 +151,7 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -169,12 +172,14 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -189,13 +194,15 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("name")
-                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -209,6 +216,7 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
@@ -224,6 +232,7 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -240,10 +249,6 @@ namespace RecipeNutrient.Data.Migrations
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("RecipeNutrient.Data.Model.Unit", null)
-                        .WithMany("Recipes")
-                        .HasForeignKey("UnitId");
 
                     b.HasOne("RecipeNutrient.Data.Model.User", "User")
                         .WithMany("Recipes")
@@ -317,8 +322,6 @@ namespace RecipeNutrient.Data.Migrations
             modelBuilder.Entity("RecipeNutrient.Data.Model.Unit", b =>
                 {
                     b.Navigation("RecipeIngredients");
-
-                    b.Navigation("Recipes");
                 });
 
             modelBuilder.Entity("RecipeNutrient.Data.Model.User", b =>

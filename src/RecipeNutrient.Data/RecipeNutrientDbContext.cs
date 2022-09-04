@@ -46,13 +46,13 @@ namespace RecipeNutrient.Data
 
             base.OnModelCreating(modelBuilder);
         }
-        public DbSet<Category> Category { get; set; }
-        public DbSet<Ingredient> Ingredient { get; set; }
-        public DbSet<Recipe> Recipe { get; set; }
-        public DbSet<RecipeIngredient> RecipeIngredient { get; set; }
-        public DbSet<Role> Role { get; set; }
-        public DbSet<Unit> Unit { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<Category>? Category { get; set; }
+        public DbSet<Ingredient>? Ingredient { get; set; }
+        public DbSet<Recipe>? Recipe { get; set; }
+        public DbSet<RecipeIngredient>? RecipeIngredient { get; set; }
+        public DbSet<Role>? Role { get; set; }
+        public DbSet<Unit>? Unit { get; set; }
+        public DbSet<User>? User { get; set; }
 
 
     }

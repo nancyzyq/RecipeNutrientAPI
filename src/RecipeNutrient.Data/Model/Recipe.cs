@@ -15,7 +15,7 @@ namespace RecipeNutrient.Data.Model
 
         public virtual Category Category { get; set; }
         public virtual User User { get; set; }
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        //public virtual ICollection<Ingredient> Ingredients { get; set; }
         public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
     }
 }

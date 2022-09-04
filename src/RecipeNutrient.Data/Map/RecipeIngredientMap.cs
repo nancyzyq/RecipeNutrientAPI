@@ -9,19 +9,21 @@ namespace RecipeNutrient.Data.Map
     {
         public void Configure(EntityTypeBuilder<RecipeIngredient> builder)
         {
-            builder.Property(r => r.Amount).HasPrecision(9, 2);
+            builder.Property(ri => ri.Amount).HasPrecision(9, 2);
+            builder.Property(ri => ri.CreatedAt).ValueGeneratedOnAdd();
+            builder.Property(ri => ri.UpdatedAt).ValueGeneratedOnUpdate();
 
-            builder.HasOne(r => r.Recipe)
-                    .WithMany(x => x.RecipeIngredients)
-                    .HasForeignKey(r => r.RecipeId);
+            builder.HasOne(ri => ri.Recipe)
+                    .WithMany(r => r.RecipeIngredients)
+                    .HasForeignKey(ri => ri.RecipeId);
 
-            builder.HasOne(r => r.Ingredient)
-                .WithMany(x => x.RecipeIngredients)
-                .HasForeignKey(x => x.IngredientId);
+            builder.HasOne(ri => ri.Ingredient)
+                .WithMany(i => i.RecipeIngredients)
+                .HasForeignKey(ri => ri.IngredientId);
 
-            builder.HasOne(r => r.Unit)
-                .WithMany(x => x.RecipeIngredients)
-                .HasForeignKey(x => x.UnitId);
+            builder.HasOne(ri => ri.Unit)
+                .WithMany(u => u.RecipeIngredients)
+                .HasForeignKey(ri => ri.UnitId);
 
         }
     }

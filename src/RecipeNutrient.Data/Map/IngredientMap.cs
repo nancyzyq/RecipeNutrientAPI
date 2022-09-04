@@ -9,18 +9,22 @@ namespace RecipeNutrient.Data.Map
     {
         public void Configure(EntityTypeBuilder<Ingredient> builder)
         {
-            builder.Property(m => m.Name).HasMaxLength(500);
-            builder.Property(m => m.Energy).HasPrecision(12, 2);
-            builder.Property(m => m.Fat).HasPrecision(12, 2);
-            builder.Property(m => m.SaturatedFat).HasPrecision(12, 2);
-            builder.Property(m => m.Carbohydrate).HasPrecision(12, 2);
-            builder.Property(m => m.Sugar).HasPrecision(12, 2);
-            builder.Property(m => m.Sodium).HasPrecision(12, 2);
+            builder.Property(i => i.Name).HasMaxLength(500);
+            builder.Property(i => i.Energy).HasPrecision(12, 2);
+            builder.Property(i => i.Fat).HasPrecision(12, 2);
+            builder.Property(i => i.SaturatedFat).HasPrecision(12, 2);
+            builder.Property(i => i.Carbohydrate).HasPrecision(12, 2);
+            builder.Property(i => i.Sugar).HasPrecision(12, 2);
+            builder.Property(i => i.Sodium).HasPrecision(12, 2);
+            builder.Property(i => i.CreatedAt).ValueGeneratedOnAdd();
+            builder.Property(i => i.UpdatedAt).ValueGeneratedOnUpdate();
 
-            builder.HasMany(r => r.Recipes)
-            .WithMany(i => i.Ingredients)
-            .UsingEntity<RecipeIngredient>(o => o.HasOne(a => a.Recipe).WithMany(x => x.RecipeIngredients),
-                            ri => ri.HasOne(a => a.Ingredient).WithMany(y => y.RecipeIngredients));
+            //builder.HasMany(r => r.Recipes)
+            //.WithMany(i => i.Ingredients)
+            //.UsingEntity<RecipeIngredient>(o => o.HasOne(a => a.Recipe).WithMany(x => x.RecipeIngredients),
+            //                ri => ri.HasOne(a => a.Ingredient).WithMany(y => y.RecipeIngredients));
+            builder.HasMany(i => i.RecipeIngredients)
+            .WithOne(ri => ri.Ingredient);
         }
     }
 }

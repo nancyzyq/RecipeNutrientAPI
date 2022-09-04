@@ -9,8 +9,11 @@ namespace RecipeNutrient.Data.Map
     {
         public void Configure(EntityTypeBuilder<Unit> builder)
         {
-            builder.HasMany(r => r.RecipeIngredients)
-            .WithOne(i => i.Unit);
+            builder.Property(u => u.CreatedAt).ValueGeneratedOnAdd();
+            builder.Property(u => u.UpdatedAt).ValueGeneratedOnUpdate();
+
+            builder.HasMany(u => u.RecipeIngredients)
+            .WithOne(ri => ri.Unit);
         }
     }
 }

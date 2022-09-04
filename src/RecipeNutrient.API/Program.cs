@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RecipeNutrient.Data;
+using RecipeNutrient.Data.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,7 @@ builder.Services.AddDbContext<RecipeNutrientDbContext>(options =>
 {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
-
+builder.Services.AddScoped(typeof(IRepository<>), typeof(RecipeNutrientRepository<>));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
