@@ -10,6 +10,7 @@ namespace RecipeNutrient.Data.Map
         public void Configure(EntityTypeBuilder<Recipe> builder)
         {
             builder.Property(r => r.Name).HasMaxLength(500);
+            builder.Property(r => r.Deleted).HasDefaultValue(false);
             builder.Property(r => r.CreatedAt).ValueGeneratedOnAdd();
             builder.Property(r => r.UpdatedAt).ValueGeneratedOnUpdate();
 

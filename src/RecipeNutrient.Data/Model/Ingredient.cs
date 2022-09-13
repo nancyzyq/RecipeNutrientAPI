@@ -15,6 +15,7 @@ namespace RecipeNutrient.Data.Model
         public decimal Carbohydrate { get; set; }
         public decimal Sugar { get; set; }
         public decimal Sodium { get; set; }
+        public bool Deleted { get; set; }
 
         //public ICollection<Recipe> Recipes { get; set; }
         public ICollection<RecipeIngredient> RecipeIngredients { get; set; }

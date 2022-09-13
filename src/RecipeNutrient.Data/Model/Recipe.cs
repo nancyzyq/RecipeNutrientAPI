@@ -10,6 +10,7 @@ namespace RecipeNutrient.Data.Model
         public string Name { get; set; }
         //public string Energy { get; set; }
         public string Image { get; set; }
+        public bool Deleted { get; set; }
         public int CategoryId { get; set; }
         public int UserId { get; set; }
 

@@ -7,6 +7,7 @@ public class RoleMap : IEntityTypeConfiguration<Role>
 {
     public void Configure(EntityTypeBuilder<Role> builder)
     {
+        builder.Property(r => r.Deleted).HasDefaultValue(false);
         builder.Property(r => r.CreatedAt).ValueGeneratedOnAdd();
         builder.Property(r => r.UpdatedAt).ValueGeneratedOnUpdate();
 

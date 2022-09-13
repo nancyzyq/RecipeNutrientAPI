@@ -16,6 +16,7 @@ namespace RecipeNutrient.Data.Map
             builder.Property(i => i.Carbohydrate).HasPrecision(12, 2);
             builder.Property(i => i.Sugar).HasPrecision(12, 2);
             builder.Property(i => i.Sodium).HasPrecision(12, 2);
+            builder.Property(i => i.Deleted).HasDefaultValue(false);
             builder.Property(i => i.CreatedAt).ValueGeneratedOnAdd();
             builder.Property(i => i.UpdatedAt).ValueGeneratedOnUpdate();
 

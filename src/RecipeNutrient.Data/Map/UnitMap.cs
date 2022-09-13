@@ -9,6 +9,7 @@ namespace RecipeNutrient.Data.Map
     {
         public void Configure(EntityTypeBuilder<Unit> builder)
         {
+            builder.Property(u => u.Deleted).HasDefaultValue(false);
             builder.Property(u => u.CreatedAt).ValueGeneratedOnAdd();
             builder.Property(u => u.UpdatedAt).ValueGeneratedOnUpdate();
 

@@ -10,6 +10,7 @@ namespace RecipeNutrient.Data.Map
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.Property(c => c.Name).HasMaxLength(250);
+            builder.Property(c => c.Deleted).HasDefaultValue(false);
             builder.Property(c => c.CreatedAt).ValueGeneratedOnAdd();
             builder.Property(c => c.UpdatedAt).ValueGeneratedOnUpdate();
 
@@ -18,4 +19,5 @@ namespace RecipeNutrient.Data.Map
         }
     }
 }
+
 

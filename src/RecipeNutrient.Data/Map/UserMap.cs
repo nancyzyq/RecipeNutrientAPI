@@ -8,6 +8,7 @@ namespace RecipeNutrient.Data.Model
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.Property(u => u.Deleted).HasDefaultValue(false);
             builder.Property(u => u.CreatedAt).ValueGeneratedOnAdd();
             builder.Property(u => u.UpdatedAt).ValueGeneratedOnUpdate();
 
