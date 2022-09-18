@@ -11,7 +11,7 @@ using RecipeNutrient.Data;
 namespace RecipeNutrient.Data.Migrations
 {
     [DbContext(typeof(RecipeNutrientDbContext))]
-    [Migration("20220911042842_initial")]
+    [Migration("20220918061522_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -256,6 +256,9 @@ namespace RecipeNutrient.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("LastName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Password")
                         .HasColumnType("longtext");
 
                     b.Property<int>("RoleId")

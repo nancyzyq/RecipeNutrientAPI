@@ -16,7 +16,7 @@ namespace RecipeNutrient.API.Controllers
             _ingredientService = ingredientService;
         }
 
-        public IActionResult GetPageList()
+        public IActionResult Getingredients()
         {
             IList<Ingredient> ingredients = _ingredientService.GetIngredients();
             return Ok(ingredients);

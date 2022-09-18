@@ -256,6 +256,9 @@ namespace RecipeNutrient.Data.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("longtext");
+
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 

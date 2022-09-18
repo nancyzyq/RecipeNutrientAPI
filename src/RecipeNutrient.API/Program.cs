@@ -19,6 +19,7 @@ builder.Services.AddDbContext<RecipeNutrientDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 builder.Services.AddScoped(typeof(IRepository<>), typeof(RecipeNutrientRepository<>));
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IIngredientService, IngredientService>();
 
 var app = builder.Build();
