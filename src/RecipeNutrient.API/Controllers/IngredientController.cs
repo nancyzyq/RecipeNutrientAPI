@@ -21,6 +21,41 @@ namespace RecipeNutrient.API.Controllers
             IList<Ingredient> ingredients = _ingredientService.GetIngredients();
             return Ok(ingredients);
         }
+
+        [HttpGet("id")]
+        public IActionResult GetIngredientById(int id)
+        {
+            var data = _ingredientService.GetIngredientById(id);
+            if (data == null)
+            {
+                return NotFound();
+            }
+            return Ok(data);
+        }
+
+        [HttpPost("create")]
+        public async Task<ActionResult<Ingredient>> CreateIngredient([FromBody] Ingredient ingredient)
+        {
+            var data = await _ingredientService.InsertIngredient(ingredient);
+            return Ok(data);
+
+        }
+
+        [HttpPut("update")]
+        public async Task<ActionResult<Ingredient>> UpdateCategory([FromBody] Ingredient ingredient)
+        {
+            try
+            {
+                await _ingredientService.UpdateIngredient(ingredient);
+                return Ok(ingredient);
+            } catch (Exception e)
+            {
+                Console.WriteLine("err message");
+                Console.WriteLine(e.Message);
+                return BadRequest(e.Message);
+            }
+            
+        }
     }
 }
 

@@ -36,7 +36,7 @@ namespace RecipeNutrient.API.Controllers
             await _categoryService.UpdateCategory(category);
             return Ok(category);
         }
-
+        
         //[HttpDelete("/delete")]
         //public async IActionResult DeleteCategory([FromBody] Category category)
         //{

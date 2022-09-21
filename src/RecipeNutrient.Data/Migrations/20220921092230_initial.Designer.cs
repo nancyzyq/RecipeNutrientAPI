@@ -11,7 +11,7 @@ using RecipeNutrient.Data;
 namespace RecipeNutrient.Data.Migrations
 {
     [DbContext(typeof(RecipeNutrientDbContext))]
-    [Migration("20220918061522_initial")]
+    [Migration("20220921092230_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,6 +79,10 @@ namespace RecipeNutrient.Data.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
+
+                    b.Property<decimal>("Protein")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("decimal(12,2)");
 
                     b.Property<decimal>("SaturatedFat")
                         .HasPrecision(12, 2)

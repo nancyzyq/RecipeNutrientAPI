@@ -5,7 +5,7 @@ namespace RecipeNutrient.Services
 {
     public interface IIngredientService
     {
-        Task InsertIngredient(Ingredient ingrdient);
+        Task<Ingredient> InsertIngredient(Ingredient ingrdient);
         Task InsertIngredients(IEnumerable<Ingredient> ingredients);
         Task UpdateIngredient(Ingredient ingrdient);
         Task DeleteIngredient(Ingredient ingrdient);

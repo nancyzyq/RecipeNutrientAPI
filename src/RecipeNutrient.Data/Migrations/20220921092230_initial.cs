@@ -40,6 +40,7 @@ namespace RecipeNutrient.Data.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    Protein = table.Column<decimal>(type: "decimal(12,2)", precision: 12, scale: 2, nullable: false),
                     Energy = table.Column<decimal>(type: "decimal(12,2)", precision: 12, scale: 2, nullable: false),
                     Fat = table.Column<decimal>(type: "decimal(12,2)", precision: 12, scale: 2, nullable: false),
                     SaturatedFat = table.Column<decimal>(type: "decimal(12,2)", precision: 12, scale: 2, nullable: false),

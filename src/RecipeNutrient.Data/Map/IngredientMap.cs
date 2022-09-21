@@ -10,6 +10,7 @@ namespace RecipeNutrient.Data.Map
         public void Configure(EntityTypeBuilder<Ingredient> builder)
         {
             builder.Property(i => i.Name).HasMaxLength(500);
+            builder.Property(i => i.Protein).HasPrecision(12, 2);
             builder.Property(i => i.Energy).HasPrecision(12, 2);
             builder.Property(i => i.Fat).HasPrecision(12, 2);
             builder.Property(i => i.SaturatedFat).HasPrecision(12, 2);

@@ -9,6 +9,7 @@ namespace RecipeNutrient.Data.Model
         //{
         //}
         public string Name { get; set; }
+        public decimal Protein { get; set; }
         public decimal Energy { get; set; }
         public decimal Fat { get; set; }
         public decimal SaturatedFat { get; set; }

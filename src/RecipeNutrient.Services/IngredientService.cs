@@ -13,9 +13,9 @@ namespace RecipeNutrient.Services
             _ingredientRepository = ingredientRepository;
         }
 
-        public async Task InsertIngredient(Ingredient ingrdient)
+        public async Task<Ingredient> InsertIngredient(Ingredient ingrdient)
         {
-            await _ingredientRepository.Insert(ingrdient);
+            return await _ingredientRepository.Insert(ingrdient);
         }
 
         public async Task InsertIngredients(IEnumerable<Ingredient> ingredients)

@@ -78,6 +78,10 @@ namespace RecipeNutrient.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
+                    b.Property<decimal>("Protein")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("decimal(12,2)");
+
                     b.Property<decimal>("SaturatedFat")
                         .HasPrecision(12, 2)
                         .HasColumnType("decimal(12,2)");
