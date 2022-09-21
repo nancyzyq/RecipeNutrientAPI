@@ -50,8 +50,6 @@ namespace RecipeNutrient.API.Controllers
                 return Ok(ingredient);
             } catch (Exception e)
             {
-                Console.WriteLine("err message");
-                Console.WriteLine(e.Message);
                 return BadRequest(e.Message);
             }
             
