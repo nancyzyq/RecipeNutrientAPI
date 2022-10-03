@@ -15,7 +15,7 @@ namespace RecipeNutrient.Data.Repository
         IQueryable<T> GetList();
         IQueryable<T> GetEntities(Expression<Func<T, bool>> expression);
         T GetEntityById(int id);
-        //T? GetEntity(Expression<Func<T, bool>> whereLambda);
+        T GetEntity(Expression<Func<T, bool>> expression);
     }
 }
 

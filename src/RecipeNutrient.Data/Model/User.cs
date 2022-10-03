@@ -13,7 +13,7 @@ namespace RecipeNutrient.Data.Model
         public bool Deleted { get; set; }
         public int RoleId { get; set; }
 
-        public virtual Role Role { get; set; }
+        public Role Role { get; set; }
         public ICollection<Recipe> Recipes { get; set; }
     }
 }

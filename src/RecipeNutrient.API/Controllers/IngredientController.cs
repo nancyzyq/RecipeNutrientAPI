@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using RecipeNutrient.Data.Model;
 using RecipeNutrient.Services;
 
@@ -16,6 +17,7 @@ namespace RecipeNutrient.API.Controllers
             _ingredientService = ingredientService;
         }
 
+        [Authorize]
         public IActionResult Getingredients()
         {
             IList<Ingredient> ingredients = _ingredientService.GetIngredients();

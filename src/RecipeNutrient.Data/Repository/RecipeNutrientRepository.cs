@@ -49,6 +49,10 @@ namespace RecipeNutrient.Data.Repository
         {
             return _RecipeNutrientDbContext.Set<T>().Find(id);
         }
+        public T GetEntity(Expression<Func<T, bool>> expression)
+        {
+            return _RecipeNutrientDbContext.Set<T>().SingleOrDefault(expression);
+        }
     }
 }
 
