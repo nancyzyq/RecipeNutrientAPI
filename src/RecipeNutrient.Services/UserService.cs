@@ -10,12 +10,14 @@ namespace RecipeNutrient.Services
     public class UserService : IUserService
     {
         private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Role> _roleRepository;
         private readonly IJwtHandler _jwtHandler;
         private readonly IMapper _mapper;
 
-        public UserService(IRepository<User> userRepository, IJwtHandler jwtHandler, IMapper mapper)
+        public UserService(IRepository<User> userRepository, IRepository<Role> roleRepository, IJwtHandler jwtHandler, IMapper mapper)
         {
             _userRepository = userRepository;
+            _roleRepository = roleRepository;
             _mapper = mapper;
             _jwtHandler = jwtHandler;
         }
@@ -23,6 +25,7 @@ namespace RecipeNutrient.Services
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
             var user = _userRepository.GetEntity(u => u.Email == model.Email);
+            user.Role = _roleRepository.GetEntityById(user.RoleId);
 
             // validate user
             if (user == null || !BCrypt.Verify(model.Password, user.Password))
@@ -32,7 +35,7 @@ namespace RecipeNutrient.Services
             //var response = _mapper.Map<AuthenticateResponse>(user);
             //response.Token = _jwtHandler.GenerateToken(user);
             string token = _jwtHandler.GenerateToken(user);
-            Console.WriteLine(token);
+            //Console.WriteLine(token);
             AuthenticateResponse response = new AuthenticateResponse
             {
                 Id = user.Id,
@@ -87,7 +90,9 @@ namespace RecipeNutrient.Services
 
         public User GetUserById(int id)
         {
-            return _userRepository.GetEntityById(id);
+            User user = _userRepository.GetEntityById(id);
+            user.Role = _roleRepository.GetEntityById(user.RoleId);
+            return user;
         }
     }
 }

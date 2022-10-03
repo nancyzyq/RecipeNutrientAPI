@@ -11,11 +11,13 @@ namespace RecipeNutrient.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+        //private readonly IRoleService _roleService;
         //private readonly IUserService _userService;
 
         public UserController(IUserService userService)
         {
             _userService = userService;
+            //_roleService = roleService;
         }
 
         [HttpPost("authenticate")]
@@ -28,12 +30,13 @@ namespace RecipeNutrient.API.Controllers
         [HttpGet("id")]
         public IActionResult GetUserById(int id)
         {
-            var data = _userService.GetUserById(id);
-            if (data == null)
+            var user = _userService.GetUserById(id);
+            if (user == null)
             {
                 return NotFound();
             }
-            return Ok(data);
+            //user.Role = _roleService.GetRoleById(user.RoleId);
+            return Ok(user);
         }
 
         [HttpPost("register")]

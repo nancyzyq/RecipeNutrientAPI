@@ -22,10 +22,10 @@ namespace RecipeNutrient.Services
 
         public string GenerateToken(User user)
         {
-            //Console.WriteLine(user);
+            //Console.WriteLine(user.Role.Name);
             var claims = new[] {
-                                    new Claim("Id", user.Id.ToString())
-                                    //new Claim(ClaimTypes.Role, user.Role.Name)
+                                    new Claim("Id", user.Id.ToString()),
+                                    new Claim(ClaimTypes.Role, user.Role.Name)
                                 };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSetting.Key));
