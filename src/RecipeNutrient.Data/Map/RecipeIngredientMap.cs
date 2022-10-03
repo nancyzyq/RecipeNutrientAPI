@@ -17,13 +17,20 @@ namespace RecipeNutrient.Data.Map
                     .WithMany(r => r.RecipeIngredients)
                     .HasForeignKey(ri => ri.RecipeId);
 
+            //builder.HasOne(ri => ri.Ingredient)
+            //    .WithMany(i => i.RecipeIngredients)
+            //    .HasForeignKey(ri => ri.IngredientId);
+
+            //builder.HasOne(ri => ri.Unit)
+            //    .WithMany(u => u.RecipeIngredients)
+            //    .HasForeignKey(ri => ri.UnitId);
             builder.HasOne(ri => ri.Ingredient)
-                .WithMany(i => i.RecipeIngredients)
-                .HasForeignKey(ri => ri.IngredientId);
+                    .WithMany()
+                    .HasForeignKey(ri => ri.IngredientId);
 
             builder.HasOne(ri => ri.Unit)
-                .WithMany(u => u.RecipeIngredients)
-                .HasForeignKey(ri => ri.UnitId);
+                    .WithMany()
+                    .HasForeignKey(ri => ri.UnitId);
 
         }
     }

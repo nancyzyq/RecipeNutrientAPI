@@ -25,8 +25,9 @@ namespace RecipeNutrient.Data.Map
             //.WithMany(i => i.Ingredients)
             //.UsingEntity<RecipeIngredient>(o => o.HasOne(a => a.Recipe).WithMany(x => x.RecipeIngredients),
             //                ri => ri.HasOne(a => a.Ingredient).WithMany(y => y.RecipeIngredients));
-            builder.HasMany(i => i.RecipeIngredients)
-            .WithOne(ri => ri.Ingredient);
+
+            //builder.HasMany(i => i.RecipeIngredients)
+            //.WithOne(ri => ri.Ingredient);
         }
     }
 }

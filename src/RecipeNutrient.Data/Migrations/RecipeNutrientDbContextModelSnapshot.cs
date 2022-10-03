@@ -280,7 +280,7 @@ namespace RecipeNutrient.Data.Migrations
             modelBuilder.Entity("RecipeNutrient.Data.Model.Recipe", b =>
                 {
                     b.HasOne("RecipeNutrient.Data.Model.Category", "Category")
-                        .WithMany("Recipes")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -299,7 +299,7 @@ namespace RecipeNutrient.Data.Migrations
             modelBuilder.Entity("RecipeNutrient.Data.Model.RecipeIngredient", b =>
                 {
                     b.HasOne("RecipeNutrient.Data.Model.Ingredient", "Ingredient")
-                        .WithMany("RecipeIngredients")
+                        .WithMany()
                         .HasForeignKey("IngredientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -311,7 +311,7 @@ namespace RecipeNutrient.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("RecipeNutrient.Data.Model.Unit", "Unit")
-                        .WithMany("RecipeIngredients")
+                        .WithMany()
                         .HasForeignKey("UnitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -326,7 +326,7 @@ namespace RecipeNutrient.Data.Migrations
             modelBuilder.Entity("RecipeNutrient.Data.Model.User", b =>
                 {
                     b.HasOne("RecipeNutrient.Data.Model.Role", "Role")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -334,27 +334,7 @@ namespace RecipeNutrient.Data.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("RecipeNutrient.Data.Model.Category", b =>
-                {
-                    b.Navigation("Recipes");
-                });
-
-            modelBuilder.Entity("RecipeNutrient.Data.Model.Ingredient", b =>
-                {
-                    b.Navigation("RecipeIngredients");
-                });
-
             modelBuilder.Entity("RecipeNutrient.Data.Model.Recipe", b =>
-                {
-                    b.Navigation("RecipeIngredients");
-                });
-
-            modelBuilder.Entity("RecipeNutrient.Data.Model.Role", b =>
-                {
-                    b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("RecipeNutrient.Data.Model.Unit", b =>
                 {
                     b.Navigation("RecipeIngredients");
                 });

@@ -28,14 +28,25 @@ namespace RecipeNutrient.Services
             await _ingredientRepository.Update(ingrdient);
         }
 
-        public async Task DeleteIngredient(Ingredient ingrdient)
+        //public async Task DeleteIngredient(Ingredient ingrdient)
+        //{
+        //    await _ingredientRepository.Delete(ingrdient);
+        //}
+
+        public async Task DeleteIngredient(Ingredient ingredient)
         {
-            await _ingredientRepository.Delete(ingrdient);
+            ingredient.Deleted = true;
+            await _ingredientRepository.Update(ingredient);
         }
+
+        //public IList<Ingredient> GetIngredients()
+        //{
+        //    return _ingredientRepository.GetList().ToList();
+        //}
 
         public IList<Ingredient> GetIngredients()
         {
-            return _ingredientRepository.GetList().ToList();
+            return _ingredientRepository.GetEntities(i => i.Deleted == false).ToList();
         }
 
         public Ingredient GetIngredientById(int id)

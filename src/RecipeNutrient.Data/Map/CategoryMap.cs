@@ -14,8 +14,8 @@ namespace RecipeNutrient.Data.Map
             builder.Property(c => c.CreatedAt).ValueGeneratedOnAdd();
             builder.Property(c => c.UpdatedAt).ValueGeneratedOnUpdate();
 
-            builder.HasMany(c => c.Recipes)
-            .WithOne(r => r.Category);
+            //builder.HasMany(c => c.Recipes)
+            //.WithOne(r => r.Category);
         }
     }
 }

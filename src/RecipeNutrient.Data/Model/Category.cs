@@ -9,7 +9,8 @@ namespace RecipeNutrient.Data.Model
         public string Name { get; set; }
         public bool Deleted { get; set; }
 
-        public ICollection<Recipe> Recipes { get; set; }
+        //public ICollectio
+        //<Recipe> Recipes { get; set; }
     }
 }
 

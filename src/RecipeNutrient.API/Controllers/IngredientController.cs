@@ -54,6 +54,13 @@ namespace RecipeNutrient.API.Controllers
             }
             
         }
+
+        [HttpDelete("delete")]
+        public async Task<ActionResult> DeleteIngredient([FromBody] Ingredient ingredient)
+        {
+            await _ingredientService.DeleteIngredient(ingredient);
+            return Ok("Deleted");
+        }
     }
 }
 

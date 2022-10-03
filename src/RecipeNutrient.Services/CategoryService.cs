@@ -20,9 +20,14 @@ namespace RecipeNutrient.Services
         {
             await _categoryRepository.Update(category);
         }
+        //public async Task DeleteCategory(Category category)
+        //{
+        //    await _categoryRepository.Delete(category);
+        //}
         public async Task DeleteCategory(Category category)
         {
-            await _categoryRepository.Delete(category);
+            category.Deleted = true;
+            await _categoryRepository.Update(category);
         }
         public IList<Category> GetCategories()
         {

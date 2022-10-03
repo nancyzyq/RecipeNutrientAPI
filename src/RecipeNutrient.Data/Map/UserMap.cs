@@ -15,9 +15,13 @@ namespace RecipeNutrient.Data.Model
             builder.HasMany(u => u.Recipes)
                     .WithOne(r => r.User);
 
+            //builder.HasOne(u => u.Role)
+            //    .WithMany(r => r.Users)
+            //    .HasForeignKey(u => u.RoleId);
+
             builder.HasOne(u => u.Role)
-                .WithMany(r => r.Users)
-                .HasForeignKey(u => u.RoleId);
+                    .WithMany()
+                    .HasForeignKey(u => u.RoleId);
         }
     }
 }

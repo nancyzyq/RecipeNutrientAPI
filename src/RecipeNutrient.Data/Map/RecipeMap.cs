@@ -23,8 +23,12 @@ namespace RecipeNutrient.Data.Map
                     .WithMany(u => u.Recipes)
                     .HasForeignKey(r => r.UserId);
 
+            //builder.HasOne(r => r.Category)
+            //        .WithMany(c => c.Recipes)
+            //        .HasForeignKey(r => r.CategoryId);
+
             builder.HasOne(r => r.Category)
-                    .WithMany(c => c.Recipes)
+                    .WithMany()
                     .HasForeignKey(r => r.CategoryId);
         }
     }

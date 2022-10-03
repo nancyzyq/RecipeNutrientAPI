@@ -11,8 +11,8 @@ public class RoleMap : IEntityTypeConfiguration<Role>
         builder.Property(r => r.CreatedAt).ValueGeneratedOnAdd();
         builder.Property(r => r.UpdatedAt).ValueGeneratedOnUpdate();
 
-        builder.HasMany(r => r.Users)
-                .WithOne(x => x.Role);
+        //builder.HasMany(r => r.Users)
+        //        .WithOne(x => x.Role);
     }
 }
 
