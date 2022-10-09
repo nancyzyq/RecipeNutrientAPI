@@ -33,18 +33,18 @@ namespace RecipeNutrient.Services
                 throw new Exception("Email or password is incorrect");
 
             // return user with token
-            //var response = _mapper.Map<AuthenticateResponse>(user);
-            //response.Token = _jwtHandler.GenerateToken(user);
+            var response = _mapper.Map<AuthenticateResponse>(user);
+            response.Token = _jwtHandler.GenerateToken(user);
             string token = _jwtHandler.GenerateToken(user);
             //Console.WriteLine(token);
-            AuthenticateResponse response = new AuthenticateResponse
-            {
-                Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                Token = token
-            };
+            //AuthenticateResponse response = new AuthenticateResponse
+            //{
+            //    Id = user.Id,
+            //    FirstName = user.FirstName,
+            //    LastName = user.LastName,
+            //    Email = user.Email,
+            //    Token = token
+            //};
             return response;
 
         }
