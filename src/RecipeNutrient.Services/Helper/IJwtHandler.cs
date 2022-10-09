@@ -1,7 +1,7 @@
 ﻿using System;
 using RecipeNutrient.Data.Model;
 
-namespace RecipeNutrient.Services
+namespace RecipeNutrient.Services.Helper
 {
     public interface IJwtHandler
     {

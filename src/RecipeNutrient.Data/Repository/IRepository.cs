@@ -11,7 +11,7 @@ namespace RecipeNutrient.Data.Repository
         Task Update(T model);
         //void Update(T model, List<string> properties);
         Task Delete(T model);
-        //void Delete(Expression<Func<T, bool>> whereLambda);
+        Task Delete(Expression<Func<T, bool>> expression);
         IQueryable<T> GetList();
         IQueryable<T> GetEntities(Expression<Func<T, bool>> expression);
         T GetEntityById(int id);

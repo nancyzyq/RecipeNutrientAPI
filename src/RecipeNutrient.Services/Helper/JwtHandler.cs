@@ -8,9 +8,8 @@ using System.Text;
 using RecipeNutrient.Data.Model;
 using RecipeNutrient.Services.Model;
 
-namespace RecipeNutrient.Services
+namespace RecipeNutrient.Services.Helper
 {
-    
     public class JwtHandler : IJwtHandler
     {
         private JwtSetting _jwtSetting;

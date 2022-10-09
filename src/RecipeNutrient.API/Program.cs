@@ -1,5 +1,6 @@
 ﻿using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -7,13 +8,16 @@ using System.Text;
 using RecipeNutrient.Data;
 using RecipeNutrient.Data.Repository;
 using RecipeNutrient.Services;
+using RecipeNutrient.Services.Helper;
 using RecipeNutrient.Services.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 IConfiguration configuration = builder.Configuration;
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -48,6 +52,8 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IIngredientService, IngredientService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IUnitService, UnitService>();
+builder.Services.AddScoped<IRecipeService, RecipeService>();
 
 var app = builder.Build();
 

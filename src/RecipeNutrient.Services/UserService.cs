@@ -1,9 +1,10 @@
 ﻿using System;
-
 using AutoMapper;
 using RecipeNutrient.Data.Model;
 using RecipeNutrient.Data.Repository;
 using RecipeNutrient.Services.Model;
+using RecipeNutrient.Services.Helper;
+
 namespace RecipeNutrient.Services
 {
     using BCrypt.Net;
