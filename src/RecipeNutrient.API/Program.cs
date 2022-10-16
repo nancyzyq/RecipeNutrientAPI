@@ -48,11 +48,6 @@ builder.Services.AddDbContext<RecipeNutrientDbContext>(options =>
 builder.Services.Configure<JwtSetting>(builder.Configuration.GetSection("Jwt"));
 
 builder.Services.AddAutoMapper(typeof(Program));
-
-//Assembly assem = typeof(AutoMapperProfile).Assembly;
-//builder.Services.AddAutoMapper(assem);
-
-
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(RecipeNutrientRepository<>));
