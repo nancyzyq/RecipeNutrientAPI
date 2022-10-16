@@ -16,6 +16,7 @@ namespace RecipeNutrient.API.Controllers
             _unitService = unitService;
         }
 
+        [HttpGet]
         public IActionResult getUnits()
         {
             var data = _unitService.GetUnits();

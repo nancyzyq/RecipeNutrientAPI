@@ -16,6 +16,7 @@ namespace RecipeNutrient.API.Controllers
             _categoryService = categoryService;
         }
 
+        [HttpGet]
         public IActionResult GetCategories()
         {
             IList<Category> data = _categoryService.GetCategories();

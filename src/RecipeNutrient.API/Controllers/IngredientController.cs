@@ -18,6 +18,7 @@ namespace RecipeNutrient.API.Controllers
         }
 
         [Authorize]
+        [HttpGet]
         public IActionResult Getingredients()
         {
             IList<Ingredient> ingredients = _ingredientService.GetIngredients();
