@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 using System.Text;
 using RecipeNutrient.Data;
 using RecipeNutrient.Data.Repository;
@@ -14,7 +15,9 @@ using RecipeNutrient.Services.Model;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-IConfiguration configuration = builder.Configuration;
+//IConfiguration configuration = builder.Configuration;
+
+builder.Services.AddCors();
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
@@ -45,6 +48,11 @@ builder.Services.AddDbContext<RecipeNutrientDbContext>(options =>
 builder.Services.Configure<JwtSetting>(builder.Configuration.GetSection("Jwt"));
 
 builder.Services.AddAutoMapper(typeof(Program));
+
+//Assembly assem = typeof(AutoMapperProfile).Assembly;
+//builder.Services.AddAutoMapper(assem);
+
+
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(RecipeNutrientRepository<>));
@@ -63,10 +71,14 @@ var app = builder.Build();
 //    app.UseSwagger();
 //    app.UseSwaggerUI();
 //}
+app.UseCors(x => x
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.MapControllers();
 
 app.Run();

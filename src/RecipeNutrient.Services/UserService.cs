@@ -30,7 +30,7 @@ namespace RecipeNutrient.Services
 
             // validate user
             if (user == null || !BCrypt.Verify(model.Password, user.Password))
-                throw new Exception("Email or password is incorrect");
+                throw new RecipeNutrientException("Email or password is incorrect", 400);
 
             // return user with token
             var response = _mapper.Map<AuthenticateResponse>(user);
@@ -54,7 +54,7 @@ namespace RecipeNutrient.Services
             // validate request
             if (string.IsNullOrEmpty(user.FirstName) || string.IsNullOrEmpty(user.LastName) || string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
             {
-                throw new Exception("Email and password is required");
+                throw new RecipeNutrientException("Email and password is required", 400);
                 //throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
 
@@ -62,7 +62,7 @@ namespace RecipeNutrient.Services
             var users = _userRepository.GetEntity(u => u.Email == user.Email);
             if (users != null)
             {
-                throw new Exception("Email is already taken");
+                throw new RecipeNutrientException("Email is already taken", 400);
                 //throw new HttpResponseException(HttpStatusCode.Conflict);
             }
 
