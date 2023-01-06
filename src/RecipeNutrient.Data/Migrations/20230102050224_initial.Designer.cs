@@ -11,7 +11,7 @@ using RecipeNutrient.Data;
 namespace RecipeNutrient.Data.Migrations
 {
     [DbContext(typeof(RecipeNutrientDbContext))]
-    [Migration("20220926100253_initial")]
+    [Migration("20230102050224_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
